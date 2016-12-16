@@ -1,7 +1,7 @@
 {% extends 'email/base.html' %}
 {% import 'email/sections.html' as sections %}
 
-{% set logo_url = 'https://s3-ap-southeast-1.amazonaws.com/xegre-assets/kotakcon2016-email/email-receipt-logo.png' %}
+{% set logo_url = '//s3-ap-southeast-1.amazonaws.com/xegre-assets/kotakcon2016-email/email-receipt-logo.png' %}
 {% set logo_alt = 'Boxfox Games' %}
 {% set bg_color = '#fbf1a9' %}
 
@@ -15,7 +15,7 @@ See email for full receipt details.
 {% endblock %}
 
 {% block content %}
-  {{ sections.hero_image('https://s3-ap-southeast-1.amazonaws.com/xegre-assets/kotakcon2016-email/email-receipt-banner.png', 'Thank you for backing Pasaraya!') }}
+  {{ sections.hero_image('//s3-ap-southeast-1.amazonaws.com/xegre-assets/kotakcon2016-email/email-receipt-banner.png', 'Thank you for backing Pasaraya!') }}
   {% call sections.one_column() %}
   <h1 style="color: #ff6300; line-height: 1.4">Thank You for Backing Pasaraya: Supermarket Manager!</h1>
 

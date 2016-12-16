@@ -18,6 +18,8 @@ except ImportError:
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Google Sheets API Python Quickstart'
+SPREADSHEET_ID = '1E-zZproC0CZ1vWV3Lv5aGvEUbYGLiwm_Ph4Npccd88c'
+SHEET_NAME = 'DevTest'
 
 
 def get_credentials():
@@ -64,19 +66,33 @@ def main():
     service = discovery.build('sheets', 'v4', http=http,
                               discoveryServiceUrl=discoveryUrl)
 
-    spreadsheetId = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
-    rangeName = 'Class Data!A2:E'
-    result = service.spreadsheets().values().get(
-        spreadsheetId=spreadsheetId, range=rangeName).execute()
-    values = result.get('values', [])
-
-    if not values:
-        print('No data found.')
-    else:
-        print('Name, Major:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s, %s' % (row[0], row[4]))
+    values = [
+        [
+            'Leong Seh Hui',
+            'felixleong@gmail.com',
+            'kotakcon2016-fulltier',
+            None,
+            '@felixleong'
+        ],
+        [
+            'Eric Hue',
+            'erichue@gmail.com',
+            'kotakcon2016-fulltier',
+            None,
+            None
+        ]
+    ]
+    body = {
+        'values': values
+    }
+    result = service.spreadsheets().values().append(
+        spreadsheetId=SPREADSHEET_ID,
+        range=SHEET_NAME,
+        valueInputOption='USER_ENTERED',
+        insertDataOption='INSERT_ROWS',
+        body=body).execute()
+    if not result:
+        raise RuntimeError('Failed to insert data')
 
 
 if __name__ == '__main__':

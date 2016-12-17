@@ -19,10 +19,14 @@ def preorder(
             'kotakcon2016-moral',
             'kotakcon2016-50paid',
             'kotakcon2016-paidfull']),
-        facebook=None,
-        twitter=None):
+        facebook: hug.types.text = None,
+        twitter: hug.types.text = None,
+        phone: hug.types.text = None):
     return {
         'name': name,
         'email': email,
-        'tier': tier
+        'tier': tier,
+        'facebook': facebook,
+        'twitter': twitter,
+        'phone': phone,
     }

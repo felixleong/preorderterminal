@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello world</title>
+    <title>Kotakcon 2016: Pasaraya Crowdfunding</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -29,9 +29,9 @@
     </script>
 
     <!-- Actual start of page -->
-    <h1>Hello world</h1>
+    <h1>Pasaraya: Supermarket Manager Crowdfunding Pre-Order</h1>
 
-    <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+    <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
 
     <form class="form-horizontal row" method="post" action="/preorder">
       <label for="tier" class="col-sm-3 control-label">Select Tier</label>
@@ -53,14 +53,31 @@
         <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
       </div>
 
+      <div class="col-sm-12 bg-info">
+        The following contact detail are optional to fill in but would help me
+        immensely making sure that we are able to reach out to you when the
+        game is ready.
+      </div>
+
       <label for="facebook" class="col-sm-3 control-label">Facebook <em>(Optional)</em></label>
       <div class="col-sm-9">
-        <input type="text" id="facebook" name="facebook" class="form-control" placeholder="Facebook" />
+        <div class="input-group">
+          <span class="input-group-addon">facebook.com/</span>
+          <input type="text" id="facebook" name="facebook" class="form-control" placeholder="username" />
+        </div>
       </div>
 
       <label for="twitter" class="col-sm-3 control-label">Twitter <em>(Optional)</em></label>
       <div class="col-sm-9">
-        <input type="text" id="twitter" name="twitter" class="form-control" placeholder="@username_handle" />
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input type="text" id="twitter" name="twitter" class="form-control" placeholder="username" />
+        </div>
+      </div>
+
+      <label for="phone" class="col-sm-3 control-label">Phone Number <em>(Optional)</em></label>
+      <div class="col-sm-9">
+        <input type="text" id="phone" name="phone" class="form-control" placeholder="01x-xxx-xxxx" />
       </div>
 
       <div class="col-sm-offset-3 col-sm-9">

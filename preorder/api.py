@@ -4,7 +4,7 @@ from marshmallow import fields
 
 @hug.get('/', output=hug.output_format.html)
 def index():
-    return open('index.html').read()
+    return open('preorder/templates/index.html').read()
 
 
 @hug.post(input=[

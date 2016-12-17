@@ -1,10 +1,12 @@
 import hug
-from marshmallow import fields
+import preorder.hug_types
+from preorder.env import tmpl_env
 
 
 @hug.get('/', output=hug.output_format.html)
 def index():
-    return open('preorder/templates/index.html').read()
+    tmpl = tmpl_env.get_template('index.html')
+    return tmpl.render()
 
 
 @hug.post(input=[
@@ -12,7 +14,7 @@ def index():
     hug.input_format.urlencoded])
 def preorder(
         name: hug.types.text,
-        email: fields.Email(),
+        email: preorder.hug_types.email,
         tier: hug.types.one_of([
             'kotakcon2016-moral',
             'kotakcon2016-50paid',

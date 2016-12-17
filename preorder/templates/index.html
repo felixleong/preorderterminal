@@ -1,88 +1,74 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Kotakcon 2016: Pasaraya Crowdfunding</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% extends "base.html" %}
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+{% block js_body_start %}
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1418347098216810";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+{% endblock %}
 
-    <!-- jQuery -->
-    <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+{% block content %}
+<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Actual start of page -->
+<h1>Pasaraya: Supermarket Manager Crowdfunding Pre-Order</h1>
 
-  </head>
-  <body class="container">
-    <!-- Facebook SDK -->
-    <div id="fb-root"></div>
-    <script>
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1418347098216810";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
+<form class="form-horizontal row" method="post" action="/preorder">
+  <label for="tier" class="col-sm-3 control-label">Select Tier</label>
+  <div class="col-sm-9">
+    <select id="tier" name="tier" class="form-control">
+      <option value="kotakcon2016-moral">RM0: Moral support, send me emails tier</option>
+      <option value="kotakcon2016-50paid">RM50: Half payment, lock-in discount tier</option>
+      <option value="kotakcon2016-paidfull" selected="selected">RM103: Full payment, full bonus pre-order tier</option>
+    </select>
+  </div>
 
-    <!-- Actual start of page -->
-    <h1>Pasaraya: Supermarket Manager Crowdfunding Pre-Order</h1>
+  <label for="name" class="col-sm-3 control-label">Name</label>
+  <div class="col-sm-9">
+    <input type="text" id="name" name="name" class="form-control" placeholder="Full name" />
+  </div>
 
-    <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+  <label for="email" class="col-sm-3 control-label">Email</label>
+  <div class="col-sm-9">
+    <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
+  </div>
 
-    <form class="form-horizontal row" method="post" action="/preorder">
-      <label for="tier" class="col-sm-3 control-label">Select Tier</label>
-      <div class="col-sm-9">
-        <select id="tier" name="tier" class="form-control">
-          <option value="kotakcon2016-moral">RM0: Moral support, send me emails tier</option>
-          <option value="kotakcon2016-50paid">RM50: Half payment, lock-in discount tier</option>
-          <option value="kotakcon2016-paidfull" selected="selected">RM103: Full payment, full bonus pre-order tier</option>
-        </select>
-      </div>
+  <div class="col-sm-12 bg-info">
+    The following contact detail are optional to fill in but would help me
+    immensely making sure that we are able to reach out to you when the
+    game is ready.
+  </div>
 
-      <label for="name" class="col-sm-3 control-label">Name</label>
-      <div class="col-sm-9">
-        <input type="text" id="name" name="name" class="form-control" placeholder="Full name" />
-      </div>
+  <label for="facebook" class="col-sm-3 control-label">Facebook <em>(Optional)</em></label>
+  <div class="col-sm-9">
+    <div class="input-group">
+      <span class="input-group-addon">facebook.com/</span>
+      <input type="text" id="facebook" name="facebook" class="form-control" placeholder="username" />
+    </div>
+  </div>
 
-      <label for="email" class="col-sm-3 control-label">Email</label>
-      <div class="col-sm-9">
-        <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
-      </div>
+  <label for="twitter" class="col-sm-3 control-label">Twitter <em>(Optional)</em></label>
+  <div class="col-sm-9">
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" id="twitter" name="twitter" class="form-control" placeholder="username" />
+    </div>
+  </div>
 
-      <div class="col-sm-12 bg-info">
-        The following contact detail are optional to fill in but would help me
-        immensely making sure that we are able to reach out to you when the
-        game is ready.
-      </div>
+  <label for="phone" class="col-sm-3 control-label">Phone Number <em>(Optional)</em></label>
+  <div class="col-sm-9">
+    <input type="text" id="phone" name="phone" class="form-control" placeholder="01x-xxx-xxxx" />
+  </div>
 
-      <label for="facebook" class="col-sm-3 control-label">Facebook <em>(Optional)</em></label>
-      <div class="col-sm-9">
-        <div class="input-group">
-          <span class="input-group-addon">facebook.com/</span>
-          <input type="text" id="facebook" name="facebook" class="form-control" placeholder="username" />
-        </div>
-      </div>
-
-      <label for="twitter" class="col-sm-3 control-label">Twitter <em>(Optional)</em></label>
-      <div class="col-sm-9">
-        <div class="input-group">
-          <span class="input-group-addon">@</span>
-          <input type="text" id="twitter" name="twitter" class="form-control" placeholder="username" />
-        </div>
-      </div>
-
-      <label for="phone" class="col-sm-3 control-label">Phone Number <em>(Optional)</em></label>
-      <div class="col-sm-9">
-        <input type="text" id="phone" name="phone" class="form-control" placeholder="01x-xxx-xxxx" />
-      </div>
-
-      <div class="col-sm-offset-3 col-sm-9">
-        <input type="submit" class="btn btn-default btn-primary" value="Submit" />
-      </div>
-    </form>
-  </body>
-</html>
+  <div class="col-sm-offset-3 col-sm-9">
+    <input type="submit" class="btn btn-default btn-primary" value="Submit" />
+  </div>
+</form>
+{% endblock %}

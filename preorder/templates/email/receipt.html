@@ -1,11 +1,52 @@
 {% extends 'email/base.html' %}
 {% import 'email/sections.html' as sections %}
 
+{% set bg_color = '#fbf1a9' %}
+
 {% block content %}
   {{ sections.hero_image() }}
   {% call sections.one_column() %}
-  Hello world.
+  <h1 style="color: #ff6300; line-height: 1.4">Thank You for Backing Pasaraya: Supermarket Manager!</h1>
 
-  The quick brown fox jumps over the lazy brown dog.
+  Greetings {{ name }},
+
+  Thank you for backing Pasaraya: Supermarket Manager at Kotakcon 2016! This
+  means a lot to me personally as a local game designer.
+
+  <h2 style="color: #ffb700">Pledge Details</h2>
+
+  **Pledge Tier**
+  :   Full payment w/ bonus promo
+
+  **Amount pledged**
+  :   RM105
+
+  **Reward**
+  :   - One copy of Pasaraya: Supermarket Manager at pre-order discount
+      - Alternative art promo of all employee cards w/ alternative game rules
+      card text
+      - Free shipping via PosLaju within Malaysia
+      - Game will be signed upon request
+
+  **Estimated delivery**
+  :   May 2017
+
+  As soon as the game is ready, Boxfox Games will send you a survey to request
+  for your mailing address to send out your reward and additional payments (if
+  you have backed the half-payment tier).
+
+  In the meantime, I'll be sending you periodic updates as the team progresses
+  towards the game's publication.
+
+  If you have any questions or would like to cancel the order for a refund,
+  please reply to this [email](mailto:preorder@boxfoxgames.com).
+
+  Again, thank you for your support and I'm looking forward to deliver the game
+  to you in 2017! :)
+
+  <br/><br/>
+  With immense gratitude,<br/>
+  Seh Hui<br/>
+  *Game designer and producer, Boxfox Games*
   {% endcall %}
 {% endblock %}

@@ -16,3 +16,10 @@ __config = CONFIG_SCHEMA(__parser.as_dict())
 
 # Load up the config
 EMAIL = __config.get('email', None)
+RECEIPT = __config.get('receipt', {
+    'email': '',
+    'sender_name': '',
+})
+JINJA2 = __config.get('jinja2', {
+    'markdown_extensions': '',
+})

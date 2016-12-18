@@ -18,17 +18,17 @@
 
   <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
   <!--[if mso]>
-      <style>
-          * {
-              font-family: sans-serif !important;
-          }
-      </style>
+    <style>
+      * {
+        font-family: sans-serif !important;
+      }
+    </style>
   <![endif]-->
 
   <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
   <!--[if !mso]><!-->
-      <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
-      {% block webfont_block %}{% endblock %}
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    {% block webfont_block %}{% endblock %}
   <!--<![endif]-->
 
   <!-- Web Font / @font-face : END -->
@@ -154,7 +154,9 @@
             <webversion style="color: {{ link_color|default(default_link_color) }}; text-decoration:underline; font-weight: bold;">View as a Web Page</webversion>
             <br><br>
             {% endif %}
-            Boxfox Games<br><span class="mobile-link--footer">Jln 14/1 Sek 14, Petaling Jaya, Selangor</span><br><span class="mobile-link--footer"></span>
+            Boxfox Games<br>
+            <span class="mobile-link--footer">Jln 14/1 Sek 14, Petaling Jaya, Selangor, MALAYSIA</span><br>
+            <span class="mobile-link--footer"><a href="https://facebook.com/boxfoxgames/">Facebook</a> | <a href="http://boxfoxgames.com/">Website</a></span>
             <br><br>
 
             {% if is_newsletter %}

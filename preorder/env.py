@@ -4,9 +4,16 @@ import preorder.config
 import yagmail
 
 
+# Markdown configuration
+def markdown_filter(text):
+    return markdown.markdown(
+        text,
+        extensions=preorder.config.JINJA2['markdown_extensions'].split(','))
+
+
 # Jinja2 templating
 tmpl_env = Environment(loader=PackageLoader('preorder', 'templates'))
-tmpl_env.filters['markdown'] = markdown.markdown
+tmpl_env.filters['markdown'] = markdown_filter
 
 # Email configuration
 if preorder.config.EMAIL:

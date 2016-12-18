@@ -15,6 +15,10 @@ _EMAIL_SCHEMA = Schema({
     Optional('password'): str,
 }, extra=REMOVE_EXTRA)
 
+_JINJA2_SCHEMA = Schema({
+    Optional('markdown_extensions', default=[]): str,
+})
+
 _RECEIPT_SCHEMA = Schema({
     Required('email'): Email,
     Optional('sender_name'): str,
@@ -24,4 +28,5 @@ _RECEIPT_SCHEMA = Schema({
 CONFIG_SCHEMA = Schema({
     Optional('email'): _EMAIL_SCHEMA,
     Optional('receipt'): _RECEIPT_SCHEMA,
+    Optional('jinja2'): _JINJA2_SCHEMA,
 }, extra=REMOVE_EXTRA)

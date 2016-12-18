@@ -9,6 +9,12 @@ def index():
     return tmpl.render()
 
 
+@hug.get(output=hug.output_format.html)
+def email():
+    tmpl = tmpl_env.get_template('email/receipt.html')
+    return tmpl.render()
+
+
 @hug.post(input=[
     hug.input_format.json,
     hug.input_format.urlencoded])

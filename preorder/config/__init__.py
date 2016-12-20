@@ -21,5 +21,8 @@ RECEIPT = __config.get('receipt', {
     'sender_name': '',
 })
 JINJA2 = __config.get('jinja2', {
-    'markdown_extensions': '',
+    'markdown_extensions': (
+        'markdown.extensions.tables,'
+        'markdown.extensions.def_list'),
 })
+USERS = __config.get('users', {})

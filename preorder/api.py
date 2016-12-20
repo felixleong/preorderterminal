@@ -1,17 +1,12 @@
 import hug
 import preorder.hug_types
 from preorder.env import tmpl_env
+from preorder.auth import http_basic_auth
 
 
-@hug.get('/', output=hug.output_format.html)
+@hug.get('/', output=hug.output_format.html, requires=http_basic_auth)
 def index():
     tmpl = tmpl_env.get_template('index.html')
-    return tmpl.render()
-
-
-@hug.get(output=hug.output_format.html)
-def email():
-    tmpl = tmpl_env.get_template('email/receipt.html')
     return tmpl.render()
 
 

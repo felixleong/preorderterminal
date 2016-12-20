@@ -16,7 +16,7 @@ _EMAIL_SCHEMA = Schema({
 }, extra=REMOVE_EXTRA)
 
 _JINJA2_SCHEMA = Schema({
-    Optional('markdown_extensions', default=[]): str,
+    Optional('markdown_extensions', default=''): str,
 })
 
 _RECEIPT_SCHEMA = Schema({
@@ -29,4 +29,5 @@ CONFIG_SCHEMA = Schema({
     Optional('email'): _EMAIL_SCHEMA,
     Optional('receipt'): _RECEIPT_SCHEMA,
     Optional('jinja2'): _JINJA2_SCHEMA,
+    Optional('users'): {str: str},
 }, extra=REMOVE_EXTRA)

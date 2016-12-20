@@ -8,7 +8,7 @@ from oauth2client import tools
 from oauth2client.file import Storage
 
 
-__logger = logging.getLogger('preorder.googlesheets')
+_logger = logging.getLogger('preorder.googlesheets')
 
 
 class GoogleSheets(object):
@@ -23,6 +23,13 @@ class GoogleSheets(object):
         self.app_id = app_id
         self.app_name = app_name
         self.spreadsheet_id = spreadsheet_id
+
+        credentials = self._get_credentials()
+        http = credentials.authorize(httplib2.Http())
+        discovery_url = ('https://sheets.googleapis.com/$discovery/rest?'
+                         'version=v4')
+        self.service = discovery.build(
+            'sheets', 'v4', http=http, discoveryServiceUrl=discovery_url)
 
     def _get_credentials(self):
         """Gets valid user credentials from storage.
@@ -46,29 +53,35 @@ class GoogleSheets(object):
             flow = client.flow_from_clientsecrets(
                 self._CLIENT_SECRET_FILE, self._SCOPES)
             flow.user_agent = self.app_name
-            credentials = tools.run(flow, store)
-            __logger.info('Storing credentials to {}'.format(credential_path))
+            credentials = tools.run_flow(flow, store)
+            _logger.info('Storing credentials to {}'.format(credential_path))
         return credentials
 
-    def write_row(self, sheet_range, values=[]):
-        """Write row in the Google Sheet.
+    def write_rows(self, sheet_range, values=[]):
+        """Write rows in the Google Sheet.
 
         :param str sheet_range: A1 notation of the sheet range.
         :param list values: A list of rows, which a row is a list of raw data.
         """
-        credentials = self._get_credentials()
-        http = credentials.authorize(httplib2.Http())
-        discovery_url = ('https://sheets.googleapis.com/$discovery/rest?'
-                         'version=v4')
-        service = discovery.build(
-            'sheets', 'v4', http=http, discoveryServiceUrl=discovery_url)
-
         body = {
             'values': values
         }
-        service.spreadsheets().values().append(
+        result = self.service.spreadsheets().values().append(
             spreadsheetId=self.spreadsheet_id,
             range=sheet_range,
             valueInputOption='USER_ENTERED',
             insertDataOption='INSERT_ROWS',
             body=body).execute()
+        return result
+
+
+if __name__ == '__main__':
+    """
+    A simple script to set up the Google Sheet API credentials.
+    """
+    import sys
+
+    app_id = sys.argv.pop()
+    sheet = GoogleSheets(
+        app_id, 'Google Sheets API Quickstart',
+        '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms')

@@ -1,7 +1,7 @@
 from jinja2 import Environment, PackageLoader
+from marrow.mailer import Mailer
 import markdown
 import preorder.config
-import yagmail
 
 
 # Markdown configuration
@@ -15,8 +15,17 @@ def markdown_filter(text):
 tmpl_env = Environment(loader=PackageLoader('preorder', 'templates'))
 tmpl_env.filters['markdown'] = markdown_filter
 
-# Email configuration
+
 if preorder.config.EMAIL:
-    mailer = yagmail.SMTP(**preorder.config.EMAIL)
+    mailer = Mailer({
+            'manager.use': 'futures',
+            'transport.use': 'smtp',
+            'transport.host': preorder.config.EMAIL['host'],
+            'transport.tls': 'ssl',
+            'transport.username': preorder.config.EMAIL['username'],
+            'transport.password': preorder.config.EMAIL['password'],
+            'transport.max_messages_per_connection': 5
+        })
+    mailer.start()
 else:
     mailer = None

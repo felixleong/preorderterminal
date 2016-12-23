@@ -15,7 +15,9 @@ __parser.read(__DEFAULT_CONFIG_PATH)
 __config = CONFIG_SCHEMA(__parser.as_dict())
 
 # Load up the config
+DATA = __config.get('data')
 EMAIL = __config.get('email', None)
+MAILCHIMP = __config.get('mailchimp', None)
 RECEIPT = __config.get('receipt', {
     'email': '',
     'sender_name': '',

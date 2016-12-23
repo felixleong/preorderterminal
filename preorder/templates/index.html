@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% set page = 'index' %}
+
+{% block content %}
+<!-- Actual start of page -->
+<h1>Pasaraya: Supermarket Manager Crowdfunding Pre-Order</h1>
+
+<form class="form-horizontal row" method="post" action="/order">
+  <label for="amount" class="col-sm-3 control-label">Tier</label>
+  <div class="col-sm-9">
+    <span class="btn">A copy of Pasaraya: Supermarket Manager - RM110</span>
+  </div>
+
+  <label for="name" class="col-sm-3 control-label">Name</label>
+  <div class="col-sm-9">
+    <input type="text" id="name" name="name" class="form-control" placeholder="Full name" />
+  </div>
+
+  <label for="email" class="col-sm-3 control-label">Email</label>
+  <div class="col-sm-9">
+    <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
+  </div>
+
+  <div class="col-sm-12 bg-info">
+    The following contact detail are optional to fill in but would help me
+    immensely making sure that we are able to reach out to you when the
+    game is ready.
+  </div>
+
+  <label for="facebook" class="col-sm-3 control-label">Facebook <em>(Optional)</em></label>
+  <div class="col-sm-9">
+    <div class="input-group">
+      <span class="input-group-addon">facebook.com/</span>
+      <input type="text" id="facebook" name="facebook" class="form-control" placeholder="username" />
+    </div>
+  </div>
+
+  <label for="twitter" class="col-sm-3 control-label">Twitter <em>(Optional)</em></label>
+  <div class="col-sm-9">
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input type="text" id="twitter" name="twitter" class="form-control" placeholder="username" />
+    </div>
+  </div>
+
+  <label for="phone" class="col-sm-3 control-label">Phone Number <em>(Optional)</em></label>
+  <div class="col-sm-9">
+    <input type="text" id="phone" name="phone" class="form-control" placeholder="01x-xxx-xxxx" />
+  </div>
+
+  <div class="col-sm-offset-3 col-sm-9">
+    <input type="submit" class="btn btn-default btn-primary" value="Submit" />
+  </div>
+</form>
+{% endblock %}

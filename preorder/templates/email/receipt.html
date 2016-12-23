@@ -1,0 +1,92 @@
+{% extends 'email/base.html' %}
+{% import 'email/sections.html' as sections %}
+
+{% set logo_url = 'https://s3-ap-southeast-1.amazonaws.com/xegre-assets/kotakcon2016-email/email-receipt-logo.png' %}
+{% set logo_alt = 'Boxfox Games' %}
+{% set bg_color = '#fbf1a9' %}
+
+{% block preview_text %}
+Greetings {{ name }},
+
+Thank you for backing Pasaraya: Supermarket Manager at Kotakcon 2016! As a
+local game designer, this meant a lot to me personally.
+
+See email for full receipt details.
+{% endblock %}
+
+{% block content %}
+  {{ sections.hero_image('https://s3-ap-southeast-1.amazonaws.com/xegre-assets/kotakcon2016-email/email-receipt-banner.png', 'Thank you for backing Pasaraya!') }}
+  {% call sections.one_column() %}
+  <h1 style="color: #ff6300; line-height: 1.4">Thank You for Backing Pasaraya: Supermarket Manager!</h1>
+
+  Greetings {{ name }},
+
+  Thank you for backing Pasaraya: Supermarket Manager at Kotakcon 2016! As a
+  local game designer, this meant a lot to me personally.
+
+  <h2 style="color: #ffb700">Receipt of Pre-Order</h2>
+
+  **Amount pledged**
+  :   RM110
+
+  **Reward**
+  :   - A copy of Pasaraya: Supermarket Manager
+      - A full set of alternative art Staff cards by the game designer,
+      including rules for a variant game mode
+      - Free shipping via PosLaju anywhere in Malaysia
+      - Signed by the game designer/illustrator (on request)
+
+  **Estimated delivery**
+  :   May 2017
+
+  **Transaction Time**
+  : {{ transaction_time }}
+
+  **Transaction ID**
+  : {{ transaction_id }}
+
+  <h2 style="color: #ffb700">Contact Details</h2>
+
+  **Facebook**
+  : {{ facebook }}
+
+  **Twitter**
+  : {{ twitter }}
+
+  **Phone number**
+  : {{ phone }}
+
+  <h2 style="color: #ffb700">No Commitment Refund Policy</h2>
+
+  Your pre-order is fully refundable, no-questions-asked. The refund is valid
+  between now and the date of the game’s release, which is estimated at May
+  2017 and all you need to do is write in to
+  [preorder@boxfoxgames.com](mailto:preorder@boxfoxgames.com).
+
+  I’ll be sending out an email a month prior to the game’s release and
+  reminding you when the refund period is expiring.
+
+  <h2 style="color: #ffb700">What's Next?</h2>
+
+  Over the next few months, I'll be sending you periodic updates as the team
+  progresses towards the game's publication.
+
+  You can show your support on BoardGameGeek by marking that you have
+  [preordered Pasaraya: Supermarket Manager](
+  https://boardgamegeek.com/boardgame/193240/pasaraya-supermarket-manager).
+
+  When the game is ready, Boxfox Games will send you a survey to request for
+  your mailing address to send out your reward.
+
+  If you have any questions, please reply to this [email](
+  mailto:preorder@boxfoxgames.com) and I'll respond as soon as possible.
+
+  Again, thank you for your support and I'm looking forward to deliver the game
+  to you in 2017! :)
+
+  <br/><br/>
+  With immense gratitude,<br/>
+  Seh Hui<br/>
+  *Game designer and producer, Boxfox Games*
+  {% endcall %}
+{% endblock %}

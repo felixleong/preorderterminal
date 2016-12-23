@@ -1,0 +1,104 @@
+{% macro hero_image(hero_img_url='http://placehold.it/600x300', hero_img_alt='') %}
+<!-- Hero Image, Flush : BEGIN -->
+<tr>
+  <td bgcolor="#ffffff">
+    <img src="{{ hero_img_url }}" width="600" height="" alt="{{ hero_img_alt }}" border="0" align="center" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: {{ text_color|default(default_text_color) }};">
+  </td>
+</tr>
+<!-- Hero Image, Flush : END -->
+{% endmacro %}
+
+
+{% macro one_column(text='') %}
+<!-- 1 Column Text: BEGIN -->
+<tr>
+  <td bgcolor="#ffffff">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+      <tr>
+        <td style="padding: 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: {{ text_color|default(default_text_color) }};">
+          {{ text or caller()|markdown }}
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<!-- 1 Column Text: END -->
+{% endmacro %}
+
+
+{% macro two_even_column(col_1_img='http://placehold.it/200', col_1_text='', col_2_img='http://placehold.it/200', col_2_text='') %}
+<!-- 2 Even Columns : BEGIN -->
+<tr>
+  <td bgcolor="#ffffff" align="center" height="100%" valign="top" width="100%" style="padding-bottom: 40px">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:560px;">
+      <tr>
+        <td align="center" valign="top" width="50%">
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+            {% if col_1_img %}
+            <tr>
+              <td style="text-align: center; padding: 0 10px;">
+                <img src="{{ col_1_img }}" width="200" height="" alt="alt_text" border="0" align="center" style="width: 100%; max-width: 200px; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: {{ text_color|default(default_text_color) }};">
+              </td>
+            </tr>
+            {% endif %}
+
+            <tr>
+              <td style="text-align: center;font-family: sans-serif; font-size: 15px; line-height: 20px; color: {{ text_color|default(default_text_color) }}; padding: 10px 10px 0;" class="stack-column-center">
+                {{ col_1_text }}
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td align="center" valign="top" width="50%">
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: left;">
+            {% if col_2_img %}
+            <tr>
+              <td style="text-align: center; padding: 0 10px;">
+                <img src="{{ col_2_img }}" width="200" height="" alt="alt_text" border="0" align="center" style="width: 100%; max-width: 200px; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: {{ text_color|default(default_text_color) }};">
+              </td>
+            </tr>
+            {% endif %}
+
+            <tr>
+              <td style="text-align: center;font-family: sans-serif; font-size: 15px; line-height: 20px; color: {{ text_color|default(default_text_color) }}; padding: 10px 10px 0;" class="stack-column-center">
+                {{ col_2_text }}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<!-- Two Even Columns : END -->
+{% endmacro %}
+
+
+{% macro clear_spacer() %}
+<!-- Clear Spacer : BEGIN -->
+<tr>
+  <td height="40" style="font-size: 0; line-height: 0;">
+    &nbsp;
+  </td>
+</tr>
+<!-- Clear Spacer : END -->
+{% endmacro %}
+
+
+{% macro button_link(url='', text='', css_class='') %}
+<!-- Button : Begin -->
+<tr>
+  <td bgcolor="#ffffff">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto;">
+      <tr>
+        <td style="border-radius: 3px; background: {{ button_color|default(default_button_color) }}; text-align: center;" class="button-td">
+          <a href="{{ url }}" style="background: {{ button_color|default(default_button_color) }}; border: 15px solid {{ button_color|default(default_button_color) }}; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="{{ css_class }}">
+            <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;{{ text }}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<!-- Button : END -->
+{% endmacro %}

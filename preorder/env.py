@@ -1,4 +1,5 @@
 from jinja2 import Environment, PackageLoader
+from mailchimp3 import MailChimp
 from marrow.mailer import Mailer
 import markdown
 import preorder.config
@@ -29,3 +30,10 @@ if preorder.config.EMAIL:
     mailer.start()
 else:
     mailer = None
+
+if preorder.config.MAILCHIMP:
+    mailchimp = MailChimp(
+        preorder.config.MAILCHIMP['user'],
+        preorder.config.MAILCHIMP['api_key'])
+else:
+    mailchimp = None

@@ -8,15 +8,37 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <style>
+    .navbar-brand { padding: 0; }
+    .navbar-nav .active { color: #fff; font-weight: bold; }
+    </style>
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
   </head>
   <body class="container">
     {% block js_body_start %}{% endblock %}
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Boxfox Games" src="https://s3-ap-southeast-1.amazonaws.com/xegre-assets/kotakcon2016-email/email-receipt-logo.png">
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li{% if page == 'index' %} class="active"{% endif %}><a href="/">Pre-Order<span class="sr-only">(current)</span></a></li>
+          <li{% if page == 'newsletter' %} class="active"{% endif %}><a href="/pages/?name=newsletter">Newsletter</a></li>
+        </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
     {% block content %}{% endblock %}
   </body>
 </html>
